@@ -1,0 +1,30 @@
+
+W3C Logger plugin modifies Rails to log web requests in W3C format to a seperate logfile.
+
+Install
+=======================================================================
+script/plugin install git://github.com/primedia/w3c_logger.git
+
+Usage
+=======================================================================
+After starting your Rails app, look in log/w3c.log to see your
+requests in W3C format.
+
+Example:
+2009-07-22      17:21:36        127.0.0.1       GET     /apartments/Georgia/Atlanta/    200     109795  1252    /       "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1) Gecko/20090624 Firefox/3.5"    "-"
+
+Fields are the following:
+Date		Date the request was made
+Time		Hour, Minute, Second the request was made (in UTC)
+Remote IP	IP of the visitor to your site
+Method		HTTP Method (GET, PUT, etc)
+URI		URI the visitor requested
+Status		HTTP Status code (200, 404, etc)
+Length		HTTP Response Length
+Time-taken	How long it took for Rails to handle the request
+Referrer	What page / site reffered this visit
+User-Agent	User-Agent string for your visitor
+Cookies		"-"
+
+For more, see http://www.w3.org/TR/WD-logfile.html
+
