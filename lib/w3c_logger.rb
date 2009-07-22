@@ -18,7 +18,7 @@ module ActionController
       line << request.remote_ip                               || "-"
       line << request.method.to_s.upcase                      || "-"
       line << request.request_uri                             || "-"
-      line << response.status.split(" ").first                || "-"
+      line << response.status.to_s.split(" ").first           || "-"
       line << response.body.length                            || "-"
       line << sprintf("%d", ms)                               || "-"
       line << request.referrer                                || "-"
