@@ -27,7 +27,11 @@ module ActionController
       line << request.method.to_s.upcase                      || "-"
       line << request.request_uri                             || "-"
       line << response.status.to_s.split(" ").first           || "-"
-      line << response.body.length                            || "-"
+
+      # If a controller calls send_file the response body is a proc; 
+      # therefore, check if body responds to length before calling
+      line << (response.body.respond_to?(:length) && response.body.length) || "-"
+
       line << sprintf("%d", ms)                               || "-"
       line << request.referrer                                || "-"
       line << quotify(request.user_agent                      || "-")
